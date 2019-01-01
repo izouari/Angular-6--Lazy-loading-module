@@ -1,3 +1,25 @@
-<ul>
-  <li *ngFor="let produit of produits">{{produit.ref}} - {{produit.quantite}} - {{produit.prixUnitaire}}</li>
-</ul>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-7">
+      <table class="table table-hover">
+        <thead>
+        <tr>
+          <th>refecrence</th>
+          <th>Quantite</th>
+          <th>Prix unitaire</th>
+          <th>
+            <button (click)="operation = 'add'" class="btn btn-outline-primary">ADD</button>
+          </th>
+        </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let produit of produits">
+            <td >{{produit.ref}}</td>
+            <td >{{produit.quantite}}</td>
+            <td >{{produit.prixUnitaire}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
