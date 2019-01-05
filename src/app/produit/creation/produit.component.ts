@@ -1,13 +1,14 @@
 import {Component, OnInit} from '@angular/core';
 import {FormGroup, FormBuilder, FormControl, Validators} from "@angular/forms";
 import {ValidationMessages} from "./validation.message";
+import {AbstractValidators} from "../../share/utils/abstract-validator";
 
 @Component({
   selector: 'app-produit',
   templateUrl: 'produit.component.html',
   styleUrls: ['produit.component.scss']
 })
-export class ProduitComponent implements OnInit {
+export class ProduitComponent extends AbstractValidators  implements OnInit {
 
   produitForm: FormGroup;
 
@@ -18,6 +19,7 @@ export class ProduitComponent implements OnInit {
   }
 
   constructor(private fb: FormBuilder) {
+    super();
   }
 
   ngOnInit() {
@@ -45,27 +47,16 @@ export class ProduitComponent implements OnInit {
 
   }
 
-  validateProduitForm(group: FormGroup = this.produitForm) {
-    Object.keys(group.controls)
-      .forEach((key) => {
-        const abstractControl = group.get(key);
+  getValidationMessages(): any {
+    return ValidationMessages;
+  }
 
-        this.formsError[key] = '';
-        const msgError = ValidationMessages[key];
+  getFormsErrors(): any {
+    return this.formsError;
+  }
 
-        if (abstractControl && abstractControl.touched && abstractControl.invalid) {
-          for (const errorKey in abstractControl.errors) {
-            if (errorKey) {
-              this.formsError[key] += msgError[errorKey] + ' ';
-            }
-          }
-        }
-
-        if (abstractControl instanceof FormGroup) {
-          this.validateProduitForm(abstractControl);
-        }
-      });
-    console.log(this.formsError)
+  getFormGroup(): FormGroup {
+    return this.produitForm;
   }
 
 }
