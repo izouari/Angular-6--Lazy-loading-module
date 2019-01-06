@@ -1,0 +1,38 @@
+<div class="card-body col-lg-7">
+  <form [formGroup]="contactForm">
+    <div class="form-group has-error" >
+      <label>Nom</label>
+      <input type="text" formControlName="nom" class="form-control"
+             (blur)="validateForm()">
+    </div>
+    <div *ngIf="formsError.nom" class="alert alert-danger">
+      {{formsError.nom}}
+    </div>
+    <div class="form-group has-error" >
+      <label>Prenom</label>
+      <input type="text" formControlName="prenom" class="form-control"
+             (blur)="validateForm()">
+    </div>
+    <div *ngIf="formsError.prenom" class="alert alert-danger">
+      {{formsError.prenom}}
+    </div>
+    <div formGroupName="emailGroup">
+      <div class="form-group has-error" >
+        <label>Email</label>
+        <input type="text" formControlName="email" class="form-control"
+               (blur)="validateForm()">
+      </div>
+      <div *ngIf="formsError.email" class="alert alert-danger">
+        {{formsError.email}}
+      </div>
+      <div class="form-group has-error">
+        <label>Confirm Email</label>
+        <input type="text" formControlName="confirmEmail" class="form-control"
+               (blur)="validateForm()">
+      </div>
+    </div>
+    <div *ngIf="formsError.confirmEmail || formsError.emailGroup" class="alert alert-danger">
+      {{formsError.confirmEmail ? formsError.confirmEmail : formsError.emailGroup}}
+    </div>
+  </form>
+</div>

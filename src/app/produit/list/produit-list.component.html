@@ -13,13 +13,17 @@
         </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let produit of produits">
+          <tr *ngFor="let produit of produitsFiltred">
             <td >{{produit.ref}}</td>
             <td >{{produit.quantite}}</td>
             <td >{{produit.prixUnitaire}}</td>
           </tr>
         </tbody>
       </table>
+    </div>
+    <div class="col-lg-5">
+      <label>Recherche</label>
+      <input type="text" [(ngModel)]="searchTerm">
     </div>
   </div>
 </div>

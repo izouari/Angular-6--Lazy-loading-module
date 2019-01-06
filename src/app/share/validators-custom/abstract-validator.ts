@@ -16,7 +16,7 @@ export abstract class AbstractValidators {
     this.validationMessages = this.getValidationMessages();
   }
 
-  validateProduitForm(group: FormGroup = this.getFormGroup()) {
+  validateForm(group: FormGroup = this.getFormGroup()) {
     Object.keys(group.controls)
       .forEach((key) => {
         const abstractControl = group.get(key);
@@ -33,7 +33,7 @@ export abstract class AbstractValidators {
         }
 
         if (abstractControl instanceof FormGroup) {
-          this.validateProduitForm(abstractControl);
+          this.validateForm(abstractControl);
         }
       });
     console.log(this.formsError)

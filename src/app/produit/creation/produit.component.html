@@ -3,7 +3,7 @@
     <div class="form-group has-error" >
       <label>Reference</label>
       <input type="text" formControlName="ref" class="form-control"
-      (blur)="validateProduitForm()">
+      (blur)="validateForm()">
     </div>
     <div *ngIf="formsError.ref"
          class="alert alert-danger">
@@ -12,7 +12,7 @@
     <div class="form-group">
       <label>Quantite</label>
       <input type="text" formControlName="quatite" class="form-control"
-             (blur)="validateProduitForm()">
+             (blur)="validateForm()">
     </div>
     <div *ngIf="formsError.quatite"
          class="alert alert-danger">
@@ -21,7 +21,7 @@
     <div class="form-group">
       <label>Prix Unitaire</label>
       <input type="text" formControlName="prixUnitaire" class="form-control"
-             (blur)="validateProduitForm()">
+             (blur)="validateForm()">
     </div>
     <div *ngIf="formsError.prixUnitaire"
          class="alert alert-danger">

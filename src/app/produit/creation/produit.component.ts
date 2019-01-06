@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FormGroup, FormBuilder, FormControl, Validators} from "@angular/forms";
 import {ValidationMessages} from "./validation.message";
-import {AbstractValidators} from "../../share/utils/abstract-validator";
+import {AbstractValidators} from "../../share/validators-custom/abstract-validator";
 
 @Component({
   selector: 'app-produit',
@@ -27,7 +27,7 @@ export class ProduitComponent extends AbstractValidators  implements OnInit {
     this.createProduitForm();
 
     this.produitForm.valueChanges.subscribe(() => {
-      this.validateProduitForm();
+      this.validateForm();
     })
 
 
